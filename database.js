@@ -23,3 +23,12 @@ VALUES
 (2024, 'Servizio', 150.00, 22.00, 2, '2025-01-20', 1002),
 (2025, 'Vendita', 750.00, 22.00, 3, '2025-01-20', 1003);
 
+// prodotti estratti
+SELECT id_prodotto, descrizione, data_attivazione, in_produzione
+FROM public.prodotti
+WHERE EXTRACT(YEAR FROM data_attivazione) = 2017
+  AND in_produzione = true;
+
+  // somma fatture
+  SELECT COUNT(numero_fattura) AS numero_fatture, SUM(importo) AS somma_importi
+FROM public.fatture;
